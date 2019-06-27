@@ -35,9 +35,9 @@ def main():
 
     if (args.command in ['--help', 'help', '-h', '?', '-?']):
         print('Available Commands:')
-        print('   init                  Initialize a new empty project')
-        print('   init full <Branch>    Initialize a new project with all SysmoS1 projects')
-        print('   install               Install all dependency')
+        print('   init                  Initialize a empty package.json file')
+        print('   init full <Branch>    Initialize a full package.json file with all dependecies on Main Project')
+        print('   install               Install all dependencies')
         print('   gc                    Garbage Collector')
 
 

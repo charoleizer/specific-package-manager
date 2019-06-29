@@ -11,7 +11,7 @@ def empty():
     return 'init Class -> empty()'
 
 def full(origin = 'develop'):
-    if (isAvailableBranch('xx', origin)):
+    if (isAvailableBranch('http://gitlab.sysmo.com.br/dsv-delphi/shared.git', origin)):
         return "".join(['init Class -> full(', origin, ')', ' is available'])
     else:
         return "".join(['init Class -> full(', origin, ')', ' is not available'])

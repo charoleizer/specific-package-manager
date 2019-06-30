@@ -1,4 +1,5 @@
 import git
+import configparser
 
 # Private methods
 
@@ -15,9 +16,20 @@ def empty():
     return 'init Class -> empty()'
 
 
-def full(origin='develop'):
-    # For full command, we have to use a .ini file with full dependece URLs
-    if (isAvailableBranch('LOAD URL FROM FILE', origin)):
-        return "".join(['init Class -> full(', origin, ')', ' is available'])
+def full(project, origin):
+    validProjects = []
+    invalidProjects = []
+    config = configparser.ConfigParser()
+    config.read('configuration/init-full-configurations.ini')
+
+    if (project in config):
+        for url in config[project]['DependeciesURL'].split():
+            if (isAvailableBranch(url, origin)):
+                validProjects.append("".join([url, ': ', origin]))
+            else:
+                invalidProjects.append("".join([url, ': ', origin]))
+
+        # Build the package file with validProjects and show invalidProjects
+        return validProjects
     else:
-        return "".join(['init Class -> full(', origin, ')', ' is not available'])
+        return "".join(['Project ', project, ' cant be found on configuration file'])

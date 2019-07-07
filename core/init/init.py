@@ -1,4 +1,5 @@
 import git
+import json
 import configparser
 
 # Private methods
@@ -29,7 +30,12 @@ def full(project, origin):
             else:
                 invalidProjects.append("".join([url, ': ', origin]))
 
-        # Build the package file with validProjects and show invalidProjects
-        return validProjects
+        with open('output/packages.json', 'w') as f:
+            f.write(json.dumps(validProjects, indent=4))
+
+        with open('output/failed-packages.json', 'w') as f:
+            f.write(json.dumps(invalidProjects, indent=4))
+
+        return 'All Done'
     else:
         return "".join(['Project ', project, ' cant be found on configuration file'])

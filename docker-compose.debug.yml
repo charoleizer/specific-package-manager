@@ -1,0 +1,10 @@
+version: '2.1'
+
+services:
+  specific-package-manager:
+    image: specific-package-manager
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 9011:9011

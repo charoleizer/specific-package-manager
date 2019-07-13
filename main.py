@@ -46,6 +46,8 @@ def main():
         print(' -  install                              Install all dependencies')
         print('')
         print(' -  gc                                   Garbage Collector')
+        print('')
+        print(' -  config <Path>                        Set configuration file directory')
 
 
 if __name__ == '__main__':

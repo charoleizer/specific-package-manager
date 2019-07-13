@@ -8,25 +8,26 @@ from core.gc import gc
 
 def main():
     # arg_names is an array with arguments names that will be used to join arguments to his names in args
-    arg_names = ['command', 'operation', 'parameter1', 'parameter2']
+    arg_names = ['command', 'parameter0', 'parameter1', 'parameter2']
     # namedtuple is a tuple that acts like an object, allowing you to access it's values using tuple.attribute.
     # sys.argv is an array that have the arguments passed to main.py.
     # We pass the values from this array, using get to return a default value when the given argument name doesn't have an associated value in the dictionary
     # https://stackoverflow.com/questions/5423381/checking-if-sys-argvx-is-defined
+
     args = collections.namedtuple('data', arg_names)(
         *(dict(zip(arg_names, sys.argv[1:])).get(arg, None) for arg in arg_names))
-
+    
     if not(args.command):
         exit()
 
     if (args.command in ['init']):
-        if (args.operation in ['full']):
+        if (args.parameter0 in ['full']):
             if (args.parameter1 and args.parameter2):
                 print(init.full(args.parameter1, args.parameter2))
             else:
                 print('init full must have <Project> and <Origin> arguments')
         else:
-            print(init.simple())
+            print(init.simple(args.parameter0, args.parameter1))
 
     if (args.command in ['install']):
         print(install.all())

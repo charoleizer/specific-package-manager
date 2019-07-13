@@ -13,8 +13,8 @@ def isAvailableBranch(url, branch):
 # Exposed methods
 
 
-def empty():
-    return 'init Class -> empty()'
+def simple():
+    return 'init Class -> simple()'
 
 
 def full(project, origin):

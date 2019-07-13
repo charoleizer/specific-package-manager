@@ -26,7 +26,7 @@ def main():
             else:
                 print('init full must have <Project> and <Origin> arguments')
         else:
-            print(init.empty())
+            print(init.simple())
 
     if (args.command in ['install']):
         print(install.all())

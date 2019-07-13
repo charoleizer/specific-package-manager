@@ -31,10 +31,10 @@ def full(project, origin):
                 invalidProjects.append("".join([url, ': ', origin]))
 
         with open('output/packages.json', 'w') as f:
-            f.write(json.dumps(validProjects, indent=4))
+            f.write(json.dumps({'dependencies': validProjects}, indent=4))
 
         with open('output/failed-packages.json', 'w') as f:
-            f.write(json.dumps(invalidProjects, indent=4))
+            f.write(json.dumps({'dependencies': invalidProjects}, indent=4))
 
         return 'All Done'
     else:

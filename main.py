@@ -35,11 +35,17 @@ def main():
         print(gc.garbageCollector())
 
     if (args.command in ['--help', 'help', '-h', '?', '-?']):
+        print('-------------------')
         print('Available Commands:')
-        print('   init                            Initialize a empty package file')
-        print('   init full <Project> <Origin>    Initialize a package file with all dependecies of the Project')
-        print('   install                         Install all dependencies')
-        print('   gc                              Garbage Collector')
+        print('-------------------')
+        print(' -  init <Project URL> <Origin>          Initialize a package file with URL Origin or add it to file')
+        print('')
+        print(' -  init full <Project Name> <Origin>    Initialize a package file with all dependecies of the Project.')
+        print('                                         This command  have to be configured in ./configuration/init-full-configurations.ini')
+        print('')
+        print(' -  install                              Install all dependencies')
+        print('')
+        print(' -  gc                                   Garbage Collector')
 
 
 if __name__ == '__main__':

@@ -8,5 +8,5 @@ def test_full():
     assert json.loads(open('output/packages.json', "r").read()) == {'dependencies': ['https://github.com/charoleizer/specific-package-manager.git: master']}
     assert json.loads(open('output/failed-packages.json', "r").read()) == {'dependencies': []}
 
-def test_empty():
+def test_simple():
     assert init.simple() == 'init Class -> simple()'

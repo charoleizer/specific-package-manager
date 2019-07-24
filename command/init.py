@@ -10,10 +10,12 @@ class initClass:
         self.parameter2 = parameter2
 
     def doInit(self):
-        if (self.parameter0 in ['full']):
-            if (self.parameter1 and self.parameter2):
-                print(init.full(self.parameter1, self.parameter2))
-            else:
-                print('init full must have <Project> and <Origin> arguments')
-        else:
+        print(self.parameter0)
+        if not(self.parameter0 in ['full']):
             print(init.simple(self.parameter0, self.parameter1))
+            exit()
+        
+        if (self.parameter1 and self.parameter2):
+            print(init.full(self.parameter1, self.parameter2))
+        else:
+            print('init full must have <Project> and <Origin> arguments')

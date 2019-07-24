@@ -28,6 +28,13 @@ def isAvailableBranch(url, branch):
     return myGitObject.ls_remote(url, branch).split('\n')[0]
 
 
+
+def savePrettyJSON(path, name, content):
+    with open(''.join([path, name]), 'w') as f:
+        f.write(json.dumps({DEPENDECY_OBJECT_NAME_JSON: content}, indent=4)) 
+
+
+
 # Exposed methods
 def simple(url, origin):
     validProjects = []
@@ -47,27 +54,26 @@ def simple(url, origin):
     return validProjects
 
 
+
 def full(project, origin):
-    validProjects = []
-    invalidProjects = []
     config = configparser.ConfigParser()
     config.read(CONFIGFILEDIR)
 
-    if (project in config):
-        for url in config[project][CONFIGFILE_DependeciesURL].split():
-            if (isAvailableBranch(url, origin)):
-                validProjects.append("".join([url, ': ', origin]))
-            else:
-                invalidProjects.append("".join([url, ': ', origin]))
-
-        with open(''.join([OUTPUTDIR, PACKAGENAME]), 'w') as f:
-            f.write(json.dumps(
-                {DEPENDECY_OBJECT_NAME_JSON: validProjects}, indent=4))
-
-        with open(''.join([OUTPUTDIR, FAILEDPACKAGENAME]), 'w') as f:
-            f.write(json.dumps(
-                {DEPENDECY_OBJECT_NAME_JSON: invalidProjects}, indent=4))
-
-        return 'All Done'
-    else:
+    if not(project in config):
         return "".join(['Project ', project, ' cant be found on configuration file'])
+
+    validProjects = []
+    invalidProjects = []
+    
+    for url in config[project][CONFIGFILE_DependeciesURL].split():
+        if (isAvailableBranch(url, origin)):
+            validProjects.append("".join([url, ': ', origin]))
+        else:
+            invalidProjects.append("".join([url, ': ', origin]))
+
+    savePrettyJSON(OUTPUTDIR, PACKAGENAME, validProjects)
+    savePrettyJSON(OUTPUTDIR, FAILEDPACKAGENAME, invalidProjects)
+
+    return 'All Done'
+
+        

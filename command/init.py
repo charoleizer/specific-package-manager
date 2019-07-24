@@ -10,7 +10,6 @@ class initClass:
         self.parameter2 = parameter2
 
     def doInit(self):
-        print(self.parameter0)
         if not(self.parameter0 in ['full']):
             print(init.simple(self.parameter0, self.parameter1))
             exit()

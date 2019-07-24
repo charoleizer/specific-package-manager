@@ -60,7 +60,7 @@ def full(project, origin):
     config.read(CONFIGFILEDIR)
 
     if not(project in config):
-        return "".join(['Project ', project, ' cant be found on configuration file'])
+        return "".join(['Project ', project, ' cant be found on configuration file']) 
 
     validProjects = []
     invalidProjects = []

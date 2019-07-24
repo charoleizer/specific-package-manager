@@ -5,6 +5,9 @@
 version: 2
 jobs:
   build:
+    environment:
+      CC_TEST_REPORTER_ID: 1d1bcab69de384f7d9482fac24b111b2be0eef8ea6121286a5abdfd33b639965
+
     docker:
       # specify the version you desire here
       # use `-browsers` prefix for selenium tests, e.g. `3.6.1-browsers`

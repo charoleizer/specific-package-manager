@@ -47,8 +47,9 @@ jobs:
       - run:
           name: run tests
           command: |
-            . venv/bin/activate
-            py.test --cov=tests --cov=core
+            ./cc-test-reporter before-build
+            py.test --cov=tests --cov=core --cov-report xml
+            ./cc-test-reporter after-build --coverage-input-type coverage --exit-code $?
           
 
       - store_artifacts:

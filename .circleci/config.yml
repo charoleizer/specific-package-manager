@@ -48,7 +48,7 @@ jobs:
           name: run tests
           command: |
             . venv/bin/activate
-            pytest -- -s --cache-clear tests
+            python ./tests/init_test.py test
           
 
       - store_artifacts:

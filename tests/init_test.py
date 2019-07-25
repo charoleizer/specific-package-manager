@@ -25,8 +25,9 @@ def test_full():
 
 
 
-#def test_full_invalidProject():
-#   assert init.full('testInvalid', 'master') == {'dependencies': ['https://github.com/charoleizer/trololo.git: master']}
+def test_full_invalidProject():
+    assert init.full('test', 'Trololo') == 'All Done'
+    assert json.loads(open('output/failed-packages.json', "r").read()) == {'dependencies': ['https://github.com/charoleizer/specific-package-manager.git: Trololo']}
 
 
 

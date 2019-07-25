@@ -24,13 +24,6 @@ def test_full():
     assert json.loads(open('output/failed-packages.json', "r").read()) == {'dependencies': []}
 
 
-
-def test_full_invalidProject():
-    assert init.full('test', 'Trololo') == 'All Done'
-    assert json.loads(open('output/failed-packages.json', "r").read()) == {'dependencies': ['https://github.com/charoleizer/specific-package-manager.git: Trololo']}
-
-
-
 def test_full_noConfig():
     assert init.full('test_non_exists', 'master') == 'Project test_non_exists cant be found on configuration file'
 
@@ -44,3 +37,9 @@ def test_simple_fake():
 
 def test_simple():
     assert init.simple('https://github.com/charoleizer/about-me.git', 'master') == {'dependencies': ['https://github.com/charoleizer/specific-package-manager.git: master', 'https://github.com/charoleizer/about-me.git: master']}
+
+
+
+def test_full_invalidProject():
+    assert init.full('test', 'Trololo') == 'All Done'
+    assert json.loads(open('output/failed-packages.json', "r").read()) == {'dependencies': ['https://github.com/charoleizer/specific-package-manager.git: Trololo']}

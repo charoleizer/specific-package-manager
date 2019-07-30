@@ -4,4 +4,5 @@ sys.path.append("..")  # Adds higher directory to python modules path.
 
 
 def test_all():
-    assert install.all() == 'install Class -> all()'
+    if not (install.all() == 'install Class -> all()'):
+        raise AssertionError()

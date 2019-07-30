@@ -4,4 +4,5 @@ sys.path.append("..")  # Adds higher directory to python modules path.
 
 
 def test_garbageCollector():
-    assert gc.garbageCollector() =='gc class -> garbageCollector()'
+    if not (gc.garbageCollector() == 'gc class -> garbageCollector()'):
+        raise AssertionError()

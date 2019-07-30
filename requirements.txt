@@ -9,7 +9,7 @@ chardet==3.0.4
 codeclimate-test-reporter==0.2.3
 colorama==0.4.1
 coverage==4.5.3
-Django==2.2
+Django==2.2.3
 django-filter==2.1.0
 django-reservation==0.2.9
 djangorestframework==3.9.2

@@ -29,6 +29,9 @@ def test_full():
     if not (json.loads(open('output/packages.json', "r").read()) == {'dependencies': ['https://github.com/charoleizer/specific-package-manager.git: master']}):
         raise AssertionError()
 
+    if not (json.loads(open('output/failed-packages.json', "r").read()) == {'dependencies': []}):
+        raise AssertionError()         
+
 def test_full_noConfig():
     if not (init.full('test_non_exists', 'master') == 'Project test_non_exists cant be found on configuration file'):
         raise AssertionError()

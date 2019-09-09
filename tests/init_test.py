@@ -45,7 +45,7 @@ def test_simple_fake():
 
 
 def test_simple():
-    if not (init.simple('https://github.com/charoleizer/about-me.git', 'master') == {'dependencies': ['https://github.com/charoleizer/specific-package-manager.git: master', 'https://github.com/charoleizer/about-me.git: master']}):
+    if not (init.simple('https://github.com/charoleizer/about-me.git', 'master') == {'dependencies': ['https://github.com/charoleizer/specific-package-manager.git: master', 'https://github.com/pytest-dev/pytest.git: master']}):
         raise AssertionError() 
 
 

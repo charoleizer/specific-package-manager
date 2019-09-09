@@ -7,6 +7,9 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    environment:
+      CC_TEST_REPORTER_ID: 1d1bcab69de384f7d9482fac24b111b2be0eef8ea6121286a5abdfd33b639965
+
     steps:
     - uses: actions/checkout@v1
     - name: Set up Python 3.7
@@ -28,3 +31,8 @@ jobs:
       run: |
         pip install pytest
         pytest
+        . venv/bin/activate
+        ./cc-test-reporter before-build
+        py.test --cov=tests --cov=core --cov-report xml
+        ./cc-test-reporter after-build --coverage-input-type coverage.py --exit-code $?
+

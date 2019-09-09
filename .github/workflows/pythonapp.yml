@@ -7,7 +7,7 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    environment:
+    env:
       CC_TEST_REPORTER_ID: 1d1bcab69de384f7d9482fac24b111b2be0eef8ea6121286a5abdfd33b639965
 
     steps:
